@@ -65,3 +65,7 @@ app.post('/write', upload.none(), (req, res) => {
   fs.writeFileSync(filePath, note);
   res.sendStatus(201);
 });
+
+app.get('/UploadForm.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'UploadForm.html'));
+});
