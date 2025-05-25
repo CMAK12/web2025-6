@@ -1,0 +1,31 @@
+{
+  "name": "web2026-6",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CMAK12/web2025-6.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CMAK12/web2025-6/issues"
+  },
+  "homepage": "https://github.com/CMAK12/web2025-6#readme",
+  "description": "",
+  "dependencies": {
+    "commander": "^14.0.0",
+    "express": "^5.1.0",
+    "multer": "^2.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
