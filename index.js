@@ -2,6 +2,8 @@ const express = require('express');
 const { Command } = require('commander');
 const fs = require('fs');
 const path = require('path');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 const program = new Command();
 program
@@ -18,6 +20,7 @@ if (!fs.existsSync(cacheDir)) {
 
 const app = express();
 app.use(express.json());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, host, () => {
   console.log(`Server running at http://${host}:${port}`);

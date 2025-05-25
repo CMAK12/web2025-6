@@ -1,0 +1,137 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Notes API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/write": {
+      "post": {
+        "summary": "Створити нову нотатку",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "note_name": {
+                    "type": "string",
+                    "description": "Назва нотатки"
+                  },
+                  "note": {
+                    "type": "string",
+                    "description": "Вміст нотатки"
+                  }
+                },
+                "required": ["note_name", "note"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Нотатку створено"
+          },
+          "400": {
+            "description": "Нотатка з такою назвою вже існує"
+          }
+        }
+      }
+    },
+    "/notes": {
+      "get": {
+        "summary": "Отримати всі нотатки",
+        "responses": {
+          "200": {
+            "description": "Список нотаток",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notes/{name}": {
+      "put": {
+        "summary": "Оновити нотатку",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Назва нотатки",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Нотатку оновлено"
+          },
+          "404": {
+            "description": "Нотатку не знайдено"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Видалити нотатку",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "Назва нотатки",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Нотатку видалено"
+          },
+          "404": {
+            "description": "Нотатку не знайдено"
+          }
+        }
+      }
+    },
+    "/UploadForm.html": {
+      "get": {
+        "summary": "Завантажити HTML-форму для нотаток",
+        "responses": {
+          "200": {
+            "description": "HTML сторінка з формою"
+          }
+        }
+      }
+    }
+  }
+}
